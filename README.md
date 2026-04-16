@@ -34,3 +34,12 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Environment variables
+
+Create a `.env.local` file in the root of the project:
+
+```
+VITE_API_URL=your_api_url
+VITE_API_KEY=your_api_key
+```
