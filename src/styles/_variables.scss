@@ -16,12 +16,6 @@ $breakpoint-wide: 1500px;
   }
 }
 
-@mixin wide {
-  @media (min-width: #{$breakpoint-wide}) {
-    @content;
-  }
-}
-
 // CSS Custom Properties
 :root {
   // Colors
