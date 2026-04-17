@@ -4,8 +4,12 @@ A web application for browsing, searching and managing a mobile phone catalog, b
 
 ## Tech stack
 
-- **React 18** with TypeScript
+- **React 19** with TypeScript
 - **Vite** — dev and production build tool
+- **React Router v7** — client-side routing
+- **SASS** — styling with CSS custom properties
+- **Vitest + React Testing Library** — unit and component testing
+- **ESLint + Prettier** — linting and formatting
 
 ## Getting Started
 
@@ -42,4 +46,17 @@ Create a `.env.local` file in the root of the project:
 ```
 VITE_API_URL=your_api_url
 VITE_API_KEY=your_api_key
+```
+
+### Run tests
+
+```bash
+npm run test
+```
+
+### Lint and format
+
+```bash
+npm run lint
+npm run format
 ```
