@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  background-color: var(--navbar-bg);
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 24px 40px;
+  }
+
+  @include desktop {
+    padding: 24px 100px;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.cartIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
