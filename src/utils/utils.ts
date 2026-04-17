@@ -7,3 +7,5 @@ export const deduplicateById = <T extends { id: string }>(items: T[]): T[] => {
     return true
   })
 }
+
+export const formatPrice = (price: number): string => `${price} EUR`
