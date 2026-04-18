@@ -8,8 +8,10 @@ interface ProductGridProps {
 }
 
 const ProductGrid = ({ products }: ProductGridProps) => {
+  const hasProducts = products.length > 0
+
   return (
-    <ul className={styles.grid}>
+    <ul className={`${styles.grid} ${hasProducts ? styles.visible : ''}`}>
       {products.map((product) => (
         <li key={product.id}>
           <ProductCard product={product} />

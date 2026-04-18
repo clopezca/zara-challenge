@@ -1,0 +1,20 @@
+.loadingBar {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  transform-origin: left;
+  animation: loading 1.5s ease-out forwards;
+  z-index: 10;
+}
+
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../../services/products.service'
 import type { Product } from '../../../types/product.types'
+import { useLoading } from '../../../context/loading/useLoading'
 
 const MIN_SEARCH_LENGTH = 3
 
 interface UseProductsResult {
   products: Product[]
-  isLoading: boolean
   error: string | null
 }
 
 export const useProducts = (search?: string): UseProductsResult => {
   const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const { setIsLoading } = useLoading()
 
   useEffect(() => {
     if (search && search.length < MIN_SEARCH_LENGTH) {
@@ -41,7 +41,7 @@ export const useProducts = (search?: string): UseProductsResult => {
     fetchProducts()
 
     return () => controller.abort()
-  }, [search])
+  }, [search, setIsLoading])
 
-  return { products, isLoading, error }
+  return { products, error }
 }

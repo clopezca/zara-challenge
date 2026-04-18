@@ -4,9 +4,8 @@ import { useProducts } from '../../features/products/hooks/useProducts'
 import styles from './ProductListPage.module.scss'
 
 const ProductListPage = () => {
-  const { products, isLoading, error } = useProducts()
+  const { products, error } = useProducts()
 
-  if (isLoading) return <div>Loading...</div>
   if (error) return <div>Error: {error}</div>
 
   return (

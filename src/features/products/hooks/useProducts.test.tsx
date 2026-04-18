@@ -1,8 +1,13 @@
 import { renderHook, waitFor } from '@testing-library/react'
 import * as productsService from '../../../services/products.service'
 import { useProducts } from './useProducts'
+import { LoadingProvider } from '../../../context/loading/LoadingProvider'
 
 vi.mock('../../../services/products.service')
+
+const wrapper = ({ children }: { children: React.ReactNode }) => (
+  <LoadingProvider>{children}</LoadingProvider>
+)
 
 describe('useProducts', () => {
   beforeEach(() => {
@@ -23,7 +28,7 @@ describe('useProducts', () => {
 
     vi.spyOn(productsService, 'getProducts').mockResolvedValue(mockProducts)
 
-    const { result } = renderHook(() => useProducts())
+    const { result } = renderHook(() => useProducts(), { wrapper })
 
     await waitFor(() => {
       expect(result.current.products).toEqual(mockProducts)
@@ -32,26 +37,13 @@ describe('useProducts', () => {
     expect(productsService.getProducts).toHaveBeenCalledTimes(1)
   })
 
-  it('should start in loading state and stop loading after fetch resolves', async () => {
-    vi.spyOn(productsService, 'getProducts').mockResolvedValue([])
-
-    const { result } = renderHook(() => useProducts())
-
-    expect(result.current.isLoading).toBe(true)
-
-    await waitFor(() => {
-      expect(result.current.isLoading).toBe(false)
-    })
-  })
-
   it('should return an empty list when API returns no products', async () => {
     vi.spyOn(productsService, 'getProducts').mockResolvedValue([])
 
-    const { result } = renderHook(() => useProducts())
+    const { result } = renderHook(() => useProducts(), { wrapper })
 
     await waitFor(() => {
       expect(result.current.products).toEqual([])
-      expect(result.current.isLoading).toBe(false)
       expect(result.current.error).toBeNull()
     })
   })
@@ -59,11 +51,10 @@ describe('useProducts', () => {
   it('should handle API errors and expose error state', async () => {
     vi.spyOn(productsService, 'getProducts').mockRejectedValue(new Error('API error'))
 
-    const { result } = renderHook(() => useProducts())
+    const { result } = renderHook(() => useProducts(), { wrapper })
 
     await waitFor(() => {
       expect(result.current.error).toBe('API error')
-      expect(result.current.isLoading).toBe(false)
       expect(result.current.products).toEqual([])
     })
 
@@ -73,10 +64,10 @@ describe('useProducts', () => {
   it('should not call getProducts when search term is less than 3 characters', async () => {
     vi.spyOn(productsService, 'getProducts').mockResolvedValue([])
 
-    const { result } = renderHook(() => useProducts('sa'))
+    const { result } = renderHook(() => useProducts('sa'), { wrapper })
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBe(false)
+      expect(result.current.products).toEqual([])
     })
 
     expect(productsService.getProducts).not.toHaveBeenCalled()
@@ -87,6 +78,7 @@ describe('useProducts', () => {
 
     const { rerender } = renderHook(({ search }) => useProducts(search), {
       initialProps: { search: 'sam' },
+      wrapper,
     })
 
     rerender({ search: 'samsung' })
