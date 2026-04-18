@@ -11,12 +11,6 @@
   }
 
   @include desktop {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  }
-
-  li {
-    outline: 0.5px solid var(--color-border);
-    outline-offset: -0.25px;
-    background-color: var(--color-background);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }

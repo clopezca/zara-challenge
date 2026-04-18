@@ -1,13 +1,13 @@
 @use '../../styles/variables' as *;
 
 .page {
-  padding: 0 16px;
+  padding: 0 16px 80px;
 
   @include tablet {
-    padding: 0 40px;
+    padding: 0 40px 80px;
   }
 
   @include desktop {
-    padding: 0 100px;
+    padding: 0 100px 80px;
   }
 }
