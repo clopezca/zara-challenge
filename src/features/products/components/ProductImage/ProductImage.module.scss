@@ -1,0 +1,23 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+  width: 260px;
+  height: 273px;
+
+  @include tablet {
+    width: 336px;
+    height: 414px;
+  }
+
+  @include desktop {
+    width: 510px;
+    height: 630px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
