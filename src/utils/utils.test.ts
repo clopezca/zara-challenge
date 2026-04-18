@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { deduplicateById } from './utils'
+import { deduplicateById, formatPrice, formatResultsCount } from './utils'
 
 describe('deduplicateById', () => {
   it('should remove duplicate item by id', () => {
@@ -94,5 +94,25 @@ describe('deduplicateById', () => {
 
     expect(result).toHaveLength(1)
     expect(result[0].id).toBe('SMG-S24U')
+  })
+})
+
+describe('formatPrice', () => {
+  it('should format price with EUR suffix', () => {
+    expect(formatPrice(1219)).toBe('1219 EUR')
+  })
+})
+
+describe('formatResultsCount', () => {
+  it('should return singular when count is 1', () => {
+    expect(formatResultsCount(1)).toBe('1 RESULT')
+  })
+
+  it('should return plural when count is greater than 1', () => {
+    expect(formatResultsCount(20)).toBe('20 RESULTS')
+  })
+
+  it('should return plural when count is 0', () => {
+    expect(formatResultsCount(0)).toBe('0 RESULTS')
   })
 })

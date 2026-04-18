@@ -5,11 +5,12 @@ if (!API_URL || !API_KEY) {
   throw new Error('Missing required environment variables: VITE_API_URL, VITE_API_KEY')
 }
 
-export const apiClient = async <T>(endpoint: string): Promise<T> => {
+export const apiClient = async <T>(endpoint: string, signal?: AbortSignal): Promise<T> => {
   const response = await fetch(`${API_URL}${endpoint}`, {
     headers: {
       'x-api-key': API_KEY,
     },
+    signal,
   })
 
   if (!response.ok) {

@@ -1,6 +1,7 @@
 // Breakpoints
 $breakpoint-tablet: 834px;
 $breakpoint-desktop: 1280px;
+$breakpoint-wide: 1500px;
 
 // Mixins
 @mixin tablet {
@@ -30,4 +31,20 @@ $breakpoint-desktop: 1280px;
   // Navbar
   --navbar-height: 80px;
   --navbar-bg: #ffffff;
+
+  // Card
+  --card-border-width: 0.5px;
+  --card-padding: 16px;
+  --card-gap: 24px;
+
+  // Font sizes
+  --font-size-brand: 10px;
+  --font-size-name: 12px;
+  --font-size-price: 12px;
+
+  // Font weight
+  --font-weight-light: 300;
+
+  // Transitions
+  --transition-card: 0.6s ease;
 }

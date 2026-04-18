@@ -60,3 +60,22 @@ npm run test
 npm run lint
 npm run format
 ```
+
+## Features implemented
+
+- Product list with responsive grid (mobile, tablet, desktop)
+- Real-time search by name or brand (min. 3 characters, debounced)
+- Results counter
+- Loading bar animation while fetching data
+- Error state when API fails
+- Fade-in animation on product grid load
+
+## API
+
+All requests are authenticated via `x-api-key` header, handled centrally in `src/services/api.client.ts`.
+
+### Known API behaviors
+
+- The `/products` endpoint returns a duplicate entry for `XMI-RN13P5G`. The application deduplicates by `id` before rendering.
+- Brand names are inconsistent in casing (e.g. `"Xiaomi"` vs `"XIAOMI"`). Search normalization handles this with `toLowerCase()`.
+- Responses are cached by the API (`Cache-Control: public, max-age=300`).
