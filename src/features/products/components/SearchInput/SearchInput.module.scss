@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+
+  @include tablet {
+    padding: 48px 0;
+  }
+
+  @include desktop {
+    padding: 48px 0;
+  }
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 16px;
+  line-height: 100%;
+  border: none;
+  border-bottom: 0.5px solid var(--color-border);
+  padding-bottom: 8px;
+  outline: none;
+  color: var(--color-text-primary);
+
+  &::placeholder {
+    color: var(--color-text-secondary-input);
+  }
+}
+
+.results {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}

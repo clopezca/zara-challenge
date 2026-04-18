@@ -9,3 +9,6 @@ export const deduplicateById = <T extends { id: string }>(items: T[]): T[] => {
 }
 
 export const formatPrice = (price: number): string => `${price} EUR`
+
+export const formatResultsCount = (count: number): string =>
+  `${count} ${count === 1 ? 'RESULT' : 'RESULTS'}`
