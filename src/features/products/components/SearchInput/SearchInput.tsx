@@ -10,13 +10,25 @@ interface SearchInputProps {
 const SearchInput = ({ value, onChange, resultsCount }: SearchInputProps) => {
   return (
     <div className={styles.container}>
-      <input
-        className={styles.input}
-        type="text"
-        placeholder="Search for a smartphone..."
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Search for a smartphone..."
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        {value && (
+          <button
+            className={styles.clearButton}
+            onClick={() => onChange('')}
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
       <span className={styles.results}>{formatResultsCount(resultsCount)}</span>
     </div>
   )
