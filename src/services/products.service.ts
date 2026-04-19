@@ -17,5 +17,9 @@ export const getProducts = async (search?: string, signal?: AbortSignal): Promis
 }
 
 export const getProductById = async (id: string, signal?: AbortSignal): Promise<ProductDetail> => {
-  return apiClient<ProductDetail>(`/products/${id}`, signal)
+  const data = await apiClient<ProductDetail>(`/products/${id}`, signal)
+  return {
+    ...data,
+    similarProducts: deduplicateById((await data).similarProducts),
+  }
 }

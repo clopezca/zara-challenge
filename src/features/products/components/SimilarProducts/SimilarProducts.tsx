@@ -20,6 +20,12 @@ const SimilarProducts = ({ products }: SimilarProductsProps) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollLeft = 0
+    }
+  }, [products])
+
   const handleScroll = () => {
     if (!listRef.current) return
     const { scrollLeft, scrollWidth, clientWidth } = listRef.current

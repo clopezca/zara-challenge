@@ -6,7 +6,7 @@ import ProductImage from '../../features/products/components/ProductImage/Produc
 
 import styles from './ProductDetailPage.module.scss'
 import ProductInfo from '../../features/products/components/ProductInfo/ProductInfo'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
 import ProductSpecs from '../../features/products/components/ProductSpecs/ProductsSpecs'
 import SimilarProducts from '../../features/products/components/SimilarProducts/SimilarProducts'
@@ -16,6 +16,10 @@ const ProductDetailPage = () => {
   const { product, error } = useProductDetail(id!)
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null)
   const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(null)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [id])
 
   if (error) return <ErrorMessage message={error} />
   if (!product) return null
