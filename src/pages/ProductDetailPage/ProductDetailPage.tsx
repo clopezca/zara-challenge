@@ -9,6 +9,7 @@ import ProductInfo from '../../features/products/components/ProductInfo/ProductI
 import { useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
 import ProductSpecs from '../../features/products/components/ProductSpecs/ProductsSpecs'
+import SimilarProducts from '../../features/products/components/SimilarProducts/SimilarProducts'
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>()
@@ -43,6 +44,7 @@ const ProductDetailPage = () => {
         description={product.description}
         specs={product.specs}
       />
+      <SimilarProducts products={product.similarProducts} />
     </main>
   )
 }

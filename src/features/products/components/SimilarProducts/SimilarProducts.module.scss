@@ -1,0 +1,66 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+  padding-bottom: 40px;
+  margin-top: 48px;
+
+  @include tablet {
+    padding-bottom: 40px;
+  }
+
+  @include desktop {
+    padding-bottom: 100px;
+  }
+}
+
+.title {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  overflow-x: auto;
+  list-style: none;
+  gap: 0;
+  scrollbar-width: none;
+  padding-bottom: 40px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  width: 344px;
+  height: 344px;
+  border: -0.5px solid var(--color-border);
+
+  @include tablet {
+    width: 377px;
+    height: 377px;
+  }
+
+  @include desktop {
+    width: 377px;
+    height: 377px;
+  }
+}
+
+.scrollTrack {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.scrollThumb {
+  position: absolute;
+  left: 0;
+  width: 100px;
+  height: 1px;
+  background-color: var(--color-border);
+}
