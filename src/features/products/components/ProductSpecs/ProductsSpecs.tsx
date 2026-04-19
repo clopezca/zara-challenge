@@ -1,4 +1,4 @@
-import type { ProductSpecs as ProductSpecsType } from '../../types/product.types'
+import type { ProductSpecs as ProductSpecsType } from '../../../../types/product.types'
 
 import styles from './ProductSpecs.module.scss'
 

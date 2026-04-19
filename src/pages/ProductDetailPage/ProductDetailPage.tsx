@@ -8,7 +8,7 @@ import styles from './ProductDetailPage.module.scss'
 import ProductInfo from '../../features/products/components/ProductInfo/ProductInfo'
 import { useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
-import ProductSpecs from '../../components/ProductSpecs/ProductsSpecs'
+import ProductSpecs from '../../features/products/components/ProductSpecs/ProductsSpecs'
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>()
