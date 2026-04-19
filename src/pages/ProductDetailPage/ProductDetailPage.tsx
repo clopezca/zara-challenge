@@ -8,6 +8,7 @@ import styles from './ProductDetailPage.module.scss'
 import ProductInfo from '../../features/products/components/ProductInfo/ProductInfo'
 import { useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
+import ProductSpecs from '../../components/ProductSpecs/ProductsSpecs'
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>()
@@ -36,6 +37,12 @@ const ProductDetailPage = () => {
           onAddToCart={() => console.log('add to cart')}
         />
       </section>
+      <ProductSpecs
+        brand={product.brand}
+        name={product.name}
+        description={product.description}
+        specs={product.specs}
+      />
     </main>
   )
 }

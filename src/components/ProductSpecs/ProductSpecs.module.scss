@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  padding: 0 16px;
+
+  @include tablet {
+    padding: 0 40px;
+  }
+
+  @include desktop {
+    padding: 0 100px;
+  }
+}
+
+.title {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.list {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--color-border);
+
+  &:first-child {
+    border-top: 0.5px solid var(--color-border);
+  }
+}
+
+.label {
+  font-size: var(--font-size-label-small);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+  width: 40%;
+
+  @include desktop {
+    font-size: var(--font-size-label);
+  }
+}
+
+.value {
+  font-size: var(--font-size-label-small);
+  font-weight: var(--font-weight-light);
+  width: 55%;
+
+  @include desktop {
+    font-size: var(--font-size-label);
+  }
+}
