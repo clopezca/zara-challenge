@@ -3,7 +3,13 @@
 .info {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 32px;
+
+  @include tablet {
+    width: 361px;
+    gap: 64px;
+  }
 
   @include desktop {
     width: 380px;
@@ -57,6 +63,14 @@
   cursor: not-allowed;
   line-height: 100%;
   margin-top: 16px;
+
+  @include tablet {
+    width: 361px;
+  }
+
+  @include desktop {
+    width: 361px;
+  }
 }
 
 .active {
