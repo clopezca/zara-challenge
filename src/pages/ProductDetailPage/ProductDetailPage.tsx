@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
 import ProductSpecs from '../../features/products/components/ProductSpecs/ProductsSpecs'
 import SimilarProducts from '../../features/products/components/SimilarProducts/SimilarProducts'
+import BackButton from '../../components/BackButton/BackButton'
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>()
@@ -28,6 +29,7 @@ const ProductDetailPage = () => {
 
   return (
     <main className={styles.page}>
+      <BackButton />
       <section className={styles.hero}>
         <ProductImage imageUrl={currentImage} name={product.name} />
         <ProductInfo
