@@ -11,12 +11,28 @@ import type { ColorOption, StorageOption } from '../../types/product.types'
 import ProductSpecs from '../../features/products/components/ProductSpecs/ProductSpecs'
 import SimilarProducts from '../../features/products/components/SimilarProducts/SimilarProducts'
 import BackButton from '../../components/BackButton/BackButton'
+import { useCart } from '../../context/cart/useCart'
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>()
   const { product, error } = useProductDetail(id!)
+  const { addItem } = useCart()
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null)
   const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(null)
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedStorage || !product) return
+
+    addItem({
+      id: product.id,
+      brand: product.brand,
+      name: product.name,
+      imageUrl: selectedColor.imageUrl,
+      selectedColor,
+      selectedStorage,
+      price: selectedStorage.price,
+    })
+  }
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -41,7 +57,7 @@ const ProductDetailPage = () => {
           selectedStorage={selectedStorage}
           onColorSelect={setSelectedColor}
           onStorageSelect={setSelectedStorage}
-          onAddToCart={() => console.log('add to cart')}
+          onAddToCart={handleAddToCart}
         />
       </section>
       <ProductSpecs

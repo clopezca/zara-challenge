@@ -5,17 +5,20 @@ import { LoadingProvider } from '../../context/loading/LoadingProvider'
 import * as useProductDetailHook from '../../features/products/hooks/useProductDetail'
 
 import ProductDetailPage from './ProductDetailPage'
+import { CartProvider } from '../../context/cart/CartProvider'
 
 vi.mock('../../features/products/hooks/useProductDetail')
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <LoadingProvider>
-    <MemoryRouter initialEntries={['/phone/SMG-S24U']}>
-      <Routes>
-        <Route path="/phone/:id" element={children} />
-      </Routes>
-    </MemoryRouter>
-  </LoadingProvider>
+  <CartProvider>
+    <LoadingProvider>
+      <MemoryRouter initialEntries={['/phone/SMG-S24U']}>
+        <Routes>
+          <Route path="/phone/:id" element={children} />
+        </Routes>
+      </MemoryRouter>
+    </LoadingProvider>
+  </CartProvider>
 )
 
 const mockProduct = {

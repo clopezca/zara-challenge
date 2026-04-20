@@ -3,13 +3,16 @@ import { LoadingProvider } from './context/loading/LoadingProvider'
 import { useLoading } from './context/loading/useLoading'
 import LoadingBar from './components/LoadingBar/LoadingBar'
 import Navbar from './components/Navbar/Navbar'
+import { CartProvider } from './context/cart/CartProvider'
+import { useCart } from './context/cart/useCart'
 
 const AppContent = () => {
   const { isLoading } = useLoading()
+  const { totalCount } = useCart()
 
   return (
     <>
-      <Navbar cartCount={0} />
+      <Navbar cartCount={totalCount} />
       {isLoading && <LoadingBar />}
       <AppRouter />
     </>
@@ -18,9 +21,11 @@ const AppContent = () => {
 
 function App() {
   return (
-    <LoadingProvider>
-      <AppContent />
-    </LoadingProvider>
+    <CartProvider>
+      <LoadingProvider>
+        <AppContent />
+      </LoadingProvider>
+    </CartProvider>
   )
 }
 
