@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.page {
+  padding: 0 16px;
+  padding-bottom: 200px;
+
+  @include tablet {
+    padding: 0 40px;
+    padding-bottom: 160px;
+  }
+
+  @include desktop {
+    padding: 0 100px;
+    padding-bottom: 160px;
+  }
+}
+
+.title {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+  padding: 24px 0;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
