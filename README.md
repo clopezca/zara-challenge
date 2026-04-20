@@ -69,6 +69,13 @@ npm run format
 - Loading bar animation while fetching data
 - Error state when API fails
 - Fade-in animation on product grid load
+- Product detail with dynamic image, storage and color selectors
+- Price updates based on selected storage
+- Add to cart button — active only when color and storage are selected
+- Specifications table
+- Similar products with horizontal scroll and custom scroll indicator
+- Back button navigation
+- Sticky navbar and search input
 
 ## API
 
