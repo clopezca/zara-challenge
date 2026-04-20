@@ -8,7 +8,7 @@ import styles from './ProductDetailPage.module.scss'
 import ProductInfo from '../../features/products/components/ProductInfo/ProductInfo'
 import { useEffect, useState } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
-import ProductSpecs from '../../features/products/components/ProductSpecs/ProductsSpecs'
+import ProductSpecs from '../../features/products/components/ProductSpecs/ProductSpecs'
 import SimilarProducts from '../../features/products/components/SimilarProducts/SimilarProducts'
 import BackButton from '../../components/BackButton/BackButton'
 
