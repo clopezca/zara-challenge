@@ -3,6 +3,7 @@ import { CartProvider } from './CartProvider'
 import { useCart } from './useCart'
 
 const mockCartItem = {
+  cartItemId: '123abc',
   id: 'SMG-S24U',
   brand: 'Samsung',
   name: 'Galaxy S24 Ultra',
@@ -17,14 +18,15 @@ const mockCartItem = {
 }
 
 const TestComponent = () => {
-  const { items, addItem, removeItem, totalCount } = useCart()
+  const { items, addItem, removeItem, totalCount, total } = useCart()
   return (
     <div>
-      <span>{totalCount}</span>
+      <span data-testid="count">{totalCount}</span>
+      <span data-testid="total">{total}</span>
       <button onClick={() => addItem(mockCartItem)}>add</button>
-      <button onClick={() => removeItem(mockCartItem.id)}>remove</button>
+      <button onClick={() => removeItem(mockCartItem.cartItemId)}>remove</button>
       {items.map((item) => (
-        <div key={item.id}>{item.name}</div>
+        <div key={item.cartItemId}>{item.name}</div>
       ))}
     </div>
   )
@@ -42,7 +44,7 @@ describe('CartContext', () => {
       </CartProvider>
     )
 
-    expect(screen.getByText('0')).toBeInTheDocument()
+    expect(screen.getByTestId('count')).toHaveTextContent('0')
   })
 
   it('should add item to cart', () => {
@@ -57,7 +59,7 @@ describe('CartContext', () => {
     })
 
     expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
-    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByTestId('count')).toHaveTextContent('1')
   })
 
   it('should remove item from cart', () => {
@@ -75,7 +77,7 @@ describe('CartContext', () => {
     })
 
     expect(screen.queryByText('Galaxy S24 Ultra')).not.toBeInTheDocument()
-    expect(screen.getByText('0')).toBeInTheDocument()
+    expect(screen.getByTestId('count')).toHaveTextContent('0')
   })
 
   it('should persist items to localStorage', () => {
@@ -97,5 +99,19 @@ describe('CartContext', () => {
 
     expect(() => render(<TestComponent />)).toThrow('useCart must be used within a CartProvider')
     consoleError.mockRestore()
+  })
+
+  it('should calculate total correctly', () => {
+    render(
+      <CartProvider>
+        <TestComponent />
+      </CartProvider>
+    )
+
+    act(() => {
+      screen.getByText('add').click()
+    })
+
+    expect(screen.getByTestId('total')).toHaveTextContent('1229')
   })
 })

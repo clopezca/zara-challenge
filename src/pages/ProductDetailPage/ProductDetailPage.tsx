@@ -24,6 +24,7 @@ const ProductDetailPage = () => {
     if (!selectedColor || !selectedStorage || !product) return
 
     addItem({
+      cartItemId: crypto.randomUUID(),
       id: product.id,
       brand: product.brand,
       name: product.name,

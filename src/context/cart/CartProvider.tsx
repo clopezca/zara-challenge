@@ -22,14 +22,16 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setItems((prev) => [...prev, item])
   }
 
-  const removeItem = (id: string) => {
-    setItems((prev) => prev.filter((item) => item.id !== id))
+  const removeItem = (cartItemId: string) => {
+    setItems((prev) => prev.filter((item) => item.cartItemId !== cartItemId))
   }
+
+  const total = items.reduce((acc, item) => acc + item.price, 0)
 
   const totalCount = items.length
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, totalCount }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, totalCount, total }}>
       {children}
     </CartContext.Provider>
   )

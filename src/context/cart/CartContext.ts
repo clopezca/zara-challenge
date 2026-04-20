@@ -2,6 +2,7 @@ import { createContext } from 'react'
 import type { ColorOption, StorageOption } from '../../types/product.types'
 
 export interface CartItem {
+  cartItemId: string
   id: string
   brand: string
   name: string
@@ -14,8 +15,9 @@ export interface CartItem {
 export interface CartContextType {
   items: CartItem[]
   addItem: (item: CartItem) => void
-  removeItem: (id: string) => void
+  removeItem: (cartItemId: string) => void
   totalCount: number
+  total: number
 }
 
 export const CartContext = createContext<CartContextType | null>(null)
