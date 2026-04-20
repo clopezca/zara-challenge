@@ -24,6 +24,9 @@ $breakpoint-wide: 1500px;
   --color-text-secondary-input: #aaaaaa;
   --color-text-secondary-card: #79736d;
   --color-border: #000000;
+  --color-border-light: #cccccc;
+  --color-disabled-bg: #f3f2f2;
+  --color-disabled-text: #c2bfbc;
 
   // Typography
   --font-family: Helvetica, Arial, sans-serif;
@@ -41,6 +44,13 @@ $breakpoint-wide: 1500px;
   --font-size-brand: 10px;
   --font-size-name: 12px;
   --font-size-price: 12px;
+  --font-size-title: 20px;
+  --font-size-title-desktop: 24px;
+  --font-size-title-tablet: 20px;
+  --font-size-price-desktop: 20px;
+  --font-size-price-tablet: 14px;
+  --font-size-label: 14px;
+  --font-size-label-small: 12px;
 
   // Font weight
   --font-weight-light: 300;
