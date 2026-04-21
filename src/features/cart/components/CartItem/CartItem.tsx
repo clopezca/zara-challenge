@@ -3,6 +3,7 @@ import type { CartItem as CartItemType } from '../../../../context/cart/CartCont
 import { formatPrice } from '../../../../utils/utils'
 
 import styles from './CartItem.module.scss'
+import { Link } from 'react-router-dom'
 
 interface CartItemProps {
   item: CartItemType
@@ -21,14 +22,16 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
 
   return (
     <li className={`${styles.item} ${isRemoving ? styles.fadeOut : ''}`}>
-      <div className={styles.wrapper}>
+      <Link to={`/phone/${item.id}`} className={styles.wrapper}>
         <img src={item.imageUrl} alt={item.name} className={styles.image} />
-      </div>
+      </Link>
 
       <div className={styles.info}>
         <div className={styles.topGroup}>
           <div className={styles.nameDetailsGroup}>
-            <p className={styles.name}>{item.name}</p>
+            <Link to={`/phone/${item.id}`} className={styles.name}>
+              {item.name}
+            </Link>
             <p className={styles.details}>
               {item.selectedStorage.capacity} | {item.selectedColor.name}
             </p>
