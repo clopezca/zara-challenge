@@ -12,9 +12,9 @@ const ProductGrid = ({ products }: ProductGridProps) => {
 
   return (
     <ul className={`${styles.grid} ${hasProducts ? styles.visible : ''}`} aria-label="Product list">
-      {products.map((product) => (
+      {products.map((product, index) => (
         <li key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard product={product} priority={index === 0} />
         </li>
       ))}
     </ul>
