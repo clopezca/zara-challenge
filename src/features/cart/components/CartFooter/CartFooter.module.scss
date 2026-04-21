@@ -24,16 +24,20 @@
 }
 
 .continueShopping {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 48px;
   border: 0.5px solid var(--color-border);
   background: none;
   cursor: pointer;
+  color: var(--color-text-primary);
   font-family: var(--font-family);
-  font-weight: var(--font-weight-light);
   font-size: 12px;
+  font-weight: var(--font-weight-light);
   letter-spacing: 0.08em;
+  text-decoration: none;
   text-transform: uppercase;
 
   @include tablet {
@@ -45,7 +49,7 @@
   display: none;
 
   @include tablet {
-    display: block;
+    display: flex;
   }
 }
 
@@ -69,8 +73,10 @@
   }
 
   .continueShopping {
-    display: block;
+    display: flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
     height: 48px;
     border: 0.5px solid var(--color-border);
     background: none;
