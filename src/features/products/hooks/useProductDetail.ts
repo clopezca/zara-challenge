@@ -25,7 +25,9 @@ export const useProductDetail = (id: string): UseProductDetailResult => {
         setProduct(data)
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return
-        setError(err instanceof Error ? err.message : 'Something went wrong')
+        setError(
+          err instanceof Error ? err.message : 'Something went wrong. Please try again later.'
+        )
       } finally {
         setIsLoading(false)
       }
