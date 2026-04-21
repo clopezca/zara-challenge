@@ -12,7 +12,7 @@ const CartPage = () => {
       <h1 className={styles.title}>cart ({totalCount})</h1>
       <ul className={styles.list}>
         {items.map((item) => (
-          <CartItem key={item.id} item={item} onRemove={removeItem} />
+          <CartItem key={item.cartItemId} item={item} onRemove={removeItem} />
         ))}
       </ul>
       <CartFooter total={total} isEmpty={totalCount === 0} />
