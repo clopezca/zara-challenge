@@ -31,4 +31,13 @@ describe('SearchInput', () => {
 
     expect(screen.getByText('1 RESULT')).toBeInTheDocument()
   })
+
+  it('should clear search when X button is clicked', () => {
+    const mockOnChange = vi.fn()
+    render(<SearchInput value="samsung" onChange={mockOnChange} resultsCount={5} />)
+
+    fireEvent.click(screen.getByRole('button', { name: /clear search/i }))
+
+    expect(mockOnChange).toHaveBeenCalledWith('')
+  })
 })

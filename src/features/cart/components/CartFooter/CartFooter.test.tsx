@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter, useNavigate } from 'react-router-dom'
 import CartFooter from './CartFooter'
 
@@ -48,8 +48,6 @@ describe('CartFooter', () => {
       </MemoryRouter>
     )
 
-    fireEvent.click(screen.getByText(/continue shopping/i))
-
-    expect(mockNavigate).toHaveBeenCalledWith('/')
+    expect(screen.getByRole('link', { name: /continue shopping/i })).toHaveAttribute('href', '/')
   })
 })

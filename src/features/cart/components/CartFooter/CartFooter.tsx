@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { formatPrice } from '../../../../utils/utils'
 import { ROUTES } from '../../../../routes'
 
@@ -10,16 +10,14 @@ interface CartFooterProps {
 }
 
 const CartFooter = ({ total, isEmpty }: CartFooterProps) => {
-  const navigate = useNavigate()
-
   return (
     <footer className={styles.footer} aria-label="Cart summary">
-      <button
+      <Link
+        to={ROUTES.HOME}
         className={`${styles.continueShopping} ${!isEmpty ? styles.hideOnMobile : ''}`}
-        onClick={() => navigate(ROUTES.HOME)}
       >
         continue shopping
-      </button>
+      </Link>
       {!isEmpty && (
         <>
           <div className={styles.totalRow} aria-hidden="true">
@@ -27,9 +25,9 @@ const CartFooter = ({ total, isEmpty }: CartFooterProps) => {
             <span className={styles.totalPrice}>{formatPrice(total)}</span>
           </div>
           <div className={styles.actionsRow} aria-hidden="true">
-            <button className={styles.continueShopping} onClick={() => navigate(ROUTES.HOME)}>
+            <Link to={ROUTES.HOME} className={styles.continueShopping}>
               continue shopping
-            </button>
+            </Link>
             <button className={styles.pay}>pay</button>
           </div>
           <div className={styles.rightGroup}>

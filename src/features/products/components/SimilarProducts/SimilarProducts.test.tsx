@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import SimilarProducts from './SimilarProducts'
 
@@ -39,5 +39,26 @@ describe('SimilarProducts', () => {
 
   it('should render correct number of products', () => {
     expect(screen.getAllByRole('article')).toHaveLength(2)
+  })
+
+  it('should update scroll progress when list is scrolled', () => {
+    cleanup()
+
+    render(
+      <MemoryRouter>
+        <SimilarProducts products={mockProducts} />
+      </MemoryRouter>
+    )
+
+    const list = screen.getByRole('list', { name: /similar products list/i })
+
+    Object.defineProperty(list, 'scrollLeft', { value: 100, configurable: true })
+    Object.defineProperty(list, 'scrollWidth', { value: 500, configurable: true })
+    Object.defineProperty(list, 'clientWidth', { value: 300, configurable: true })
+
+    fireEvent.scroll(list)
+
+    const progressbar = screen.getByRole('progressbar')
+    expect(progressbar).toHaveAttribute('aria-valuenow', '50')
   })
 })

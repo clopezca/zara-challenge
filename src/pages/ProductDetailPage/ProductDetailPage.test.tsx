@@ -1,11 +1,13 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 import { LoadingProvider } from '../../context/loading/LoadingProvider'
 import * as useProductDetailHook from '../../features/products/hooks/useProductDetail'
+import * as useCartHook from '../../context/cart/useCart'
 
 import ProductDetailPage from './ProductDetailPage'
 import { CartProvider } from '../../context/cart/CartProvider'
+import ProductDetailContent from './components/ProductDetailContent/ProductDetailContent'
 
 vi.mock('../../features/products/hooks/useProductDetail')
 
@@ -78,5 +80,30 @@ describe('ProductDetailPage', () => {
     render(<ProductDetailPage />, { wrapper })
 
     expect(screen.getByRole('heading', { name: 'Galaxy S24 Ultra' })).toBeInTheDocument()
+  })
+
+  it('should call addItem when add button is clicked', () => {
+    const mockAddItem = vi.fn()
+    vi.spyOn(useCartHook, 'useCart').mockReturnValue({
+      items: [],
+      addItem: mockAddItem,
+      removeItem: vi.fn(),
+      totalCount: 0,
+      total: 0,
+    })
+
+    render(<ProductDetailContent product={mockProduct} />, { wrapper })
+
+    fireEvent.click(screen.getByLabelText('Titanium Black'))
+    fireEvent.click(screen.getByText('256 GB'))
+    fireEvent.click(screen.getByRole('button', { name: /add galaxy s24 ultra to cart/i }))
+
+    expect(mockAddItem).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: 'SMG-S24U',
+        name: 'Galaxy S24 Ultra',
+        price: 1229,
+      })
+    )
   })
 })
