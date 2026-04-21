@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react'
 import { MemoryRouter, useNavigate } from 'react-router-dom'
 import NotFoundPage from './NotFoundPage'
 
@@ -31,8 +31,14 @@ describe('NotFoundPage', () => {
   })
 
   it('should navigate to home when button is clicked', () => {
-    fireEvent.click(screen.getByRole('button'))
+    cleanup()
 
-    expect(mockNavigate).toHaveBeenCalledWith('/')
+    render(
+      <MemoryRouter>
+        <NotFoundPage />
+      </MemoryRouter>
+    )
+
+    expect(screen.getByRole('link', { name: /back to home/i })).toHaveAttribute('href', '/')
   })
 })
