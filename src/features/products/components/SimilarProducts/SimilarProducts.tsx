@@ -35,16 +35,29 @@ const SimilarProducts = ({ products }: SimilarProductsProps) => {
   }
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} aria-label="Similar products">
       <h2 className={styles.title}>similar items</h2>
-      <ul className={styles.list} ref={listRef} onScroll={handleScroll}>
+      <ul
+        className={styles.list}
+        ref={listRef}
+        onScroll={handleScroll}
+        aria-label="Similar products list"
+      >
         {products.map((product) => (
           <li key={product.id} className={styles.item}>
             <ProductCard product={product} />
           </li>
         ))}
       </ul>
-      <div className={styles.scrollTrack} ref={trackRef}>
+      <div
+        className={styles.scrollTrack}
+        ref={trackRef}
+        role="progressbar"
+        aria-label="Scroll progress"
+        aria-valuenow={Math.round(scrollProgress * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
         <div
           className={styles.scrollThumb}
           style={{

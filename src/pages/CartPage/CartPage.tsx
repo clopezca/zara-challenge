@@ -8,9 +8,9 @@ const CartPage = () => {
   const { items, removeItem, totalCount, total } = useCart()
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} fadeIn`}>
       <h1 className={styles.title}>cart ({totalCount})</h1>
-      <ul className={styles.list}>
+      <ul className={styles.list} aria-label="Cart items">
         {items.map((item) => (
           <CartItem key={item.cartItemId} item={item} onRemove={removeItem} />
         ))}

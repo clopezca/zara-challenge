@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import CartItem from './CartItem'
 
 const mockItem = {
@@ -18,29 +19,47 @@ const mockItem = {
 
 describe('CartItem', () => {
   it('should render product name', () => {
-    render(<CartItem item={mockItem} onRemove={() => {}} />)
+    render(
+      <MemoryRouter>
+        <CartItem item={mockItem} onRemove={() => {}} />
+      </MemoryRouter>
+    )
 
     expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
   })
 
   it('should render storage and color', () => {
-    render(<CartItem item={mockItem} onRemove={() => {}} />)
+    render(
+      <MemoryRouter>
+        <CartItem item={mockItem} onRemove={() => {}} />
+      </MemoryRouter>
+    )
 
     expect(screen.getByText('256 GB | Titanium Black')).toBeInTheDocument()
   })
 
   it('should render price', () => {
-    render(<CartItem item={mockItem} onRemove={() => {}} />)
+    render(
+      <MemoryRouter>
+        <CartItem item={mockItem} onRemove={() => {}} />
+      </MemoryRouter>
+    )
 
     expect(screen.getByText('1229 EUR')).toBeInTheDocument()
   })
 
-  it('should call onRemove with cartItemId when remove button is clicked', () => {
+  it('should call onRemove with cartItemId when remove button is clicked', async () => {
     const mockOnRemove = vi.fn()
-    render(<CartItem item={mockItem} onRemove={mockOnRemove} />)
+    render(
+      <MemoryRouter>
+        <CartItem item={mockItem} onRemove={mockOnRemove} />
+      </MemoryRouter>
+    )
 
     fireEvent.click(screen.getByRole('button'))
 
-    expect(mockOnRemove).toHaveBeenCalledWith('123abc')
+    await waitFor(() => {
+      expect(mockOnRemove).toHaveBeenCalledWith('123abc')
+    })
   })
 })

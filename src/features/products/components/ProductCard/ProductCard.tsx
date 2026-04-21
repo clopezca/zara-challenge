@@ -2,28 +2,40 @@ import { formatPrice } from '../../../../utils/utils'
 import type { Product } from '../../../../types/product.types'
 
 import styles from './ProductCard.module.scss'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 interface ProductCardProps {
   product: Product
+  priority?: boolean
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
-  const navigate = useNavigate()
-
+const ProductCard = ({ product, priority = false }: ProductCardProps) => {
   return (
-    <article className={styles.card} onClick={() => navigate(`/phone/${product.id}`)}>
-      <div className={styles.imageWrapper}>
-        <img src={product.imageUrl} alt={product.name} />
-      </div>
-
-      <div className={styles.info}>
-        <div className={styles.brandName}>
-          <span className={styles.brand}>{product.brand}</span>
-          <span className={styles.name}>{product.name}</span>
+    <article className={styles.card}>
+      <Link
+        to={`/phone/${product.id}`}
+        className={styles.cardLink}
+        aria-label={`${product.brand} ${product.name}, ${formatPrice(product.basePrice)}`}
+      >
+        <div className={styles.imageWrapper}>
+          <img
+            src={product.imageUrl}
+            alt=""
+            aria-hidden="true"
+            fetchPriority={priority ? 'high' : 'auto'}
+            width={199}
+            height={199}
+          />
         </div>
-        <span className={styles.price}>{formatPrice(product.basePrice)}</span>
-      </div>
+
+        <div className={styles.info} aria-hidden="true">
+          <div className={styles.brandName}>
+            <span className={styles.brand}>{product.brand}</span>
+            <span className={styles.name}>{product.name}</span>
+          </div>
+          <span className={styles.price}>{formatPrice(product.basePrice)}</span>
+        </div>
+      </Link>
     </article>
   )
 }

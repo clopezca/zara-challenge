@@ -10,7 +10,6 @@
   position: relative;
   overflow: hidden;
   height: 344px;
-  justify-content: space-between;
 
   @include tablet {
     height: 377px;
@@ -39,6 +38,15 @@
       color: var(--color-background);
     }
   }
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .imageWrapper {

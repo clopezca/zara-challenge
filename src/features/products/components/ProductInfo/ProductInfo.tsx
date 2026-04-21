@@ -32,26 +32,31 @@ const ProductInfo = ({
   const canAddToCart = selectedColor !== null && selectedStorage !== null
 
   return (
-    <div className={styles.info}>
-      <div className={styles.header}>
-        <h1 className={styles.name}>{name}</h1>
-        <p className={styles.price}>
-          {selectedStorage ? formatPrice(price) : `From ${formatPrice(basePrice)}`}
-        </p>
+    <div className={styles.wrapper}>
+      <div className={styles.info}>
+        <div className={styles.header}>
+          <h1 className={styles.name}>{name}</h1>
+          <p className={styles.price}>
+            {selectedStorage ? formatPrice(price) : `From ${formatPrice(basePrice)}`}
+          </p>
+        </div>
+        <StorageSelector
+          options={storageOptions}
+          selected={selectedStorage}
+          onSelect={onStorageSelect}
+        />
+        <ColorSelector options={colorOptions} selected={selectedColor} onSelect={onColorSelect} />
+        <button
+          className={`${styles.addButton} ${canAddToCart ? styles.active : ''}`}
+          disabled={!canAddToCart}
+          onClick={onAddToCart}
+          aria-label={
+            canAddToCart ? `Add ${name} to cart` : 'Select color and storage to add to cart'
+          }
+        >
+          Add
+        </button>
       </div>
-      <StorageSelector
-        options={storageOptions}
-        selected={selectedStorage}
-        onSelect={onStorageSelect}
-      />
-      <ColorSelector options={colorOptions} selected={selectedColor} onSelect={onColorSelect} />
-      <button
-        className={`${styles.addButton} ${canAddToCart ? styles.active : ''}`}
-        disabled={!canAddToCart}
-        onClick={onAddToCart}
-      >
-        Add
-      </button>
     </div>
   )
 }

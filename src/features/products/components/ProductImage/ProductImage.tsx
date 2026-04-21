@@ -8,7 +8,7 @@ interface ProductImageProps {
 const ProductImage = ({ imageUrl, name }: ProductImageProps) => {
   return (
     <div className={styles.wrapper}>
-      <img src={imageUrl} alt={name} />
+      <img src={imageUrl} alt={name} width={510} height={630} />
     </div>
   )
 }

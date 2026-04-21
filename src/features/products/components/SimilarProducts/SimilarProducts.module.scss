@@ -32,9 +32,27 @@
   display: flex;
   overflow-x: auto;
   list-style: none;
-  gap: 0;
+
   scrollbar-width: none;
-  padding-bottom: 40px;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  padding-bottom: 100px;
+  padding-right: 16px;
+  margin-right: -16px;
+
+  @include tablet {
+    padding-bottom: 80px;
+    padding-right: 40px;
+    margin-right: -40px;
+  }
+
+  @include desktop {
+    padding-bottom: 40px;
+    padding-right: 360px;
+    margin-right: -360px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -42,14 +60,18 @@
 }
 
 .item {
-  flex-shrink: 0;
-  width: 344px;
-  height: 344px;
-  border: -0.5px solid var(--color-border);
+  flex: 0 0 auto;
+
+  gap: 16px;
+
+  width: 280px;
+  height: 280px;
+
+  scroll-snap-align: start;
 
   @include tablet {
-    width: 377px;
-    height: 377px;
+    width: 340px;
+    height: 340px;
   }
 
   @include desktop {

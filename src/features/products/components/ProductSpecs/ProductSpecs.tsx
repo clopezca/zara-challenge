@@ -31,7 +31,7 @@ const ProductSpecs = ({ brand, name, description, specs }: ProductSpecsProps) =>
         {rows.map(({ label, value }) => (
           <div key={label} className={styles.row}>
             <dt className={styles.label}>{label}</dt>
-            <dt className={styles.value}>{value}</dt>
+            <dd className={styles.value}>{value}</dd>
           </div>
         ))}
       </dl>

@@ -61,6 +61,39 @@ npm run lint
 npm run format
 ```
 
+## Architecture
+
+The project follows a feature-based architecture with a clear separation of concerns:
+src/
+├── assets/ # SVG icons
+├── components/ # Shared UI components (Navbar, BackButton, LoadingBar, etc.)
+├── context/ # React Context API
+│ ├── cart/ # Cart state with localStorage persistence
+│ └── loading/ # Global loading state
+├── features/
+│ ├── cart/
+│ │ └── components/ # Cart-specific components
+│ └──products/
+│ ├── components/ # Product-specific components
+│ └── hooks/ # useProducts, useProductDetail
+├── hooks/ # Shared hooks (useDebounce)
+├── pages/ # Page components (ProductListPage, ProductDetailPage, CartPage, NotFoundPage)
+├── services/ # API client and product services
+├── styles/ # Global styles and SASS variables
+├── types/ # TypeScript interfaces
+└── utils/ # Utility functions
+
+### State Management
+
+- **Server state** — managed with custom hooks (`useProducts`, `useProductDetail`) using `fetch` with `AbortController`
+- **Global UI state** — `LoadingContext` for the loading bar animation
+- **Cart state** — `CartContext` with `localStorage` persistence
+- **Local state** — `useState` for component-level interactions (color/storage selection)
+
+### Routing
+
+Client-side routing with React Router v7. All pages are lazy-loaded with `React.lazy` and `Suspense` for better performance.
+
 ## Features implemented
 
 - Product list with responsive grid (mobile, tablet, desktop)
@@ -81,6 +114,9 @@ npm run format
 - Remove individual cart items
 - Cart total calculation
 - Responsive cart page with different layouts per breakpoint
+- 404 page
+- Accessibility — ARIA roles, labels, live regions (Lighthouse score: 100)
+- Performance optimizations — preconnect, fetchPriority, explicit image dimensions
 
 ## API
 

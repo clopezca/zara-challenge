@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { MemoryRouter, useNavigate } from 'react-router-dom'
+import { cleanup, render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import ProductCard from './ProductCard'
 
 vi.mock('react-router-dom', async () => {
@@ -29,7 +29,15 @@ describe('ProductCard', () => {
   })
 
   it('should render the product image', () => {
-    expect(screen.getByAltText('Galaxy S24 Ultra')).toBeInTheDocument()
+    cleanup()
+
+    const { container } = render(
+      <MemoryRouter>
+        <ProductCard product={mockProduct} />
+      </MemoryRouter>
+    )
+    const img = container.querySelector('img')
+    expect(img).toHaveAttribute('src', mockProduct.imageUrl)
   })
 
   it('should render the product brand', () => {
@@ -47,17 +55,14 @@ describe('ProductCard', () => {
   it('should navigate to product detail on click', () => {
     cleanup()
 
-    const mockNavigate = vi.fn()
-    vi.mocked(useNavigate).mockReturnValue(mockNavigate)
-
     render(
       <MemoryRouter>
         <ProductCard product={mockProduct} />
       </MemoryRouter>
     )
 
-    fireEvent.click(screen.getByRole('article'))
+    const link = screen.getByRole('link')
 
-    expect(mockNavigate).toHaveBeenCalledWith('/phone/SMG-S24U')
+    expect(link).toHaveAttribute('href', '/phone/SMG-S24U')
   })
 })
