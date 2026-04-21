@@ -27,7 +27,14 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
         className={styles.wrapper}
         aria-label={`View details of ${item.name}`}
       >
-        <img src={item.imageUrl} className={styles.image} alt="" aria-hidden="true" />
+        <img
+          src={item.imageUrl}
+          className={styles.image}
+          alt=""
+          aria-hidden="true"
+          width={160}
+          height={198}
+        />
       </Link>
 
       <div className={styles.info}>
