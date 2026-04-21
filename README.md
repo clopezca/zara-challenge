@@ -76,6 +76,11 @@ npm run format
 - Similar products with horizontal scroll and custom scroll indicator
 - Back button navigation
 - Sticky navbar and search input
+- Cart with localStorage persistence
+- Add multiple items including duplicates
+- Remove individual cart items
+- Cart total calculation
+- Responsive cart page with different layouts per breakpoint
 
 ## API
 
@@ -84,5 +89,6 @@ All requests are authenticated via `x-api-key` header, handled centrally in `src
 ### Known API behaviors
 
 - The `/products` endpoint returns a duplicate entry for `XMI-RN13P5G`. The application deduplicates by `id` before rendering.
+- The `/products/{id}` endpoint may return duplicate entries in `similarProducts`. The application deduplicates by `id` before rendering.
 - Brand names are inconsistent in casing (e.g. `"Xiaomi"` vs `"XIAOMI"`). Search normalization handles this with `toLowerCase()`.
 - Responses are cached by the API (`Cache-Control: public, max-age=300`).
