@@ -6,10 +6,15 @@
   justify-content: flex-start;
   gap: 10px;
   list-style: none;
+  transition: opacity 0.3s ease-out;
 
   @include tablet {
     gap: 40px;
   }
+}
+
+.fadeOut {
+  opacity: 0;
 }
 
 .wrapper {

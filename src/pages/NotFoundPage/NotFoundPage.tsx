@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   const navigate = useNavigate()
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} fadeIn`}>
       <h1 className={styles.title}>404</h1>
       <p className={styles.message}>Page not found</p>
       <button className={styles.button} onClick={() => navigate('/')}>

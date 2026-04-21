@@ -45,30 +45,34 @@ const ProductDetailPage = () => {
   const currentImage = selectedColor?.imageUrl ?? product.colorOptions[0]?.imageUrl
 
   return (
-    <main className={styles.page}>
-      <BackButton />
-      <section className={styles.hero}>
-        <ProductImage imageUrl={currentImage} name={product.name} />
-        <ProductInfo
+    <>
+      <div className={styles.backWrapper}>
+        <BackButton />
+      </div>
+      <main className={`${styles.page} fadeIn`}>
+        <section className={styles.hero}>
+          <ProductImage imageUrl={currentImage} name={product.name} />
+          <ProductInfo
+            name={product.name}
+            basePrice={product.basePrice}
+            colorOptions={product.colorOptions}
+            storageOptions={product.storageOptions}
+            selectedColor={selectedColor}
+            selectedStorage={selectedStorage}
+            onColorSelect={setSelectedColor}
+            onStorageSelect={setSelectedStorage}
+            onAddToCart={handleAddToCart}
+          />
+        </section>
+        <ProductSpecs
+          brand={product.brand}
           name={product.name}
-          basePrice={product.basePrice}
-          colorOptions={product.colorOptions}
-          storageOptions={product.storageOptions}
-          selectedColor={selectedColor}
-          selectedStorage={selectedStorage}
-          onColorSelect={setSelectedColor}
-          onStorageSelect={setSelectedStorage}
-          onAddToCart={handleAddToCart}
+          description={product.description}
+          specs={product.specs}
         />
-      </section>
-      <ProductSpecs
-        brand={product.brand}
-        name={product.name}
-        description={product.description}
-        specs={product.specs}
-      />
-      <SimilarProducts products={product.similarProducts} />
-    </main>
+        <SimilarProducts products={product.similarProducts} />
+      </main>
+    </>
   )
 }
 

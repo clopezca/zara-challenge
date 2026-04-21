@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { CartItem as CartItemType } from '../../../../context/cart/CartContext'
 import { formatPrice } from '../../../../utils/utils'
 
@@ -9,8 +10,17 @@ interface CartItemProps {
 }
 
 const CartItem = ({ item, onRemove }: CartItemProps) => {
+  const [isRemoving, setIsRemoving] = useState(false)
+
+  const handleRemove = () => {
+    setIsRemoving(true)
+    setTimeout(() => {
+      onRemove(item.cartItemId)
+    }, 300)
+  }
+
   return (
-    <li className={styles.item}>
+    <li className={`${styles.item} ${isRemoving ? styles.fadeOut : ''}`}>
       <div className={styles.wrapper}>
         <img src={item.imageUrl} alt={item.name} className={styles.image} />
       </div>
@@ -25,7 +35,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
           </div>
           <p className={styles.price}>{formatPrice(item.price)}</p>
         </div>
-        <button className={styles.remove} onClick={() => onRemove(item.cartItemId)}>
+        <button className={styles.remove} onClick={handleRemove}>
           remove
         </button>
       </div>

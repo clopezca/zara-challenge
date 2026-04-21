@@ -1,5 +1,17 @@
 @use '../../styles/variables' as *;
 
+.backWrapper {
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 24px 40px;
+  }
+
+  @include desktop {
+    padding: 24px 100px;
+  }
+}
+
 .page {
   padding: 0 16px;
 
