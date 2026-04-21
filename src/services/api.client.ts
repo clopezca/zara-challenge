@@ -14,7 +14,9 @@ export const apiClient = async <T>(endpoint: string, signal?: AbortSignal): Prom
   })
 
   if (!response.ok) {
-    throw new Error(`API error: ${response.status}`)
+    if (response.status === 404) throw new Error('Product not found')
+    if (response.status >= 500) throw new Error('Server error. Please try again later.')
+    throw new Error('Something went wrong. Please try again later.')
   }
 
   return response.json()
