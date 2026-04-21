@@ -25,11 +25,10 @@ const ColorSelector = ({ options, selected, onSelect }: ColorSelectorProps) => {
           />
         ))}
       </div>
-      {selected && (
-        <p className={styles.colorName} aria-live="polite">
-          {selected.name}
-        </p>
-      )}
+
+      <p className={styles.colorName} aria-live="polite">
+        {selected ? selected.name : ''}
+      </p>
     </div>
   )
 }
