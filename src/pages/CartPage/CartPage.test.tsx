@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import CartPage from './CartPage'
 import { CartProvider } from '../../context/cart/CartProvider'
@@ -57,7 +57,7 @@ describe('CartPage', () => {
     expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
   })
 
-  it('should call removeItem when remove button is clicked', () => {
+  it('should call removeItem when remove button is clicked', async () => {
     const mockRemoveItem = vi.fn()
     vi.spyOn(useCartHook, 'useCart').mockReturnValue({
       items: [mockCartItem],
@@ -69,8 +69,13 @@ describe('CartPage', () => {
 
     render(<CartPage />, { wrapper })
 
-    fireEvent.click(screen.getByRole('button', { name: /remove/i }))
+    fireEvent.click(screen.getByRole('button', { name: /remove galaxy s24 ultra from cart/i }))
 
-    expect(mockRemoveItem).toHaveBeenCalledWith('123abc')
+    await waitFor(
+      () => {
+        expect(mockRemoveItem).toHaveBeenCalledWith('123abc')
+      },
+      { timeout: 500 }
+    )
   })
 })

@@ -10,7 +10,7 @@ describe('Navbar', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByAltText('Home')).toBeInTheDocument()
+    expect(screen.getByAltText('MBST logo')).toBeInTheDocument()
   })
 
   it('should render the cart icon', () => {
@@ -20,7 +20,7 @@ describe('Navbar', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByAltText('Cart')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /cart/i })).toHaveAttribute('href', '/cart')
   })
 
   it('should display the cart count', () => {
@@ -40,7 +40,7 @@ describe('Navbar', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'Go to home' })).toHaveAttribute('href', '/')
   })
 
   it('should have a link to cart', () => {
