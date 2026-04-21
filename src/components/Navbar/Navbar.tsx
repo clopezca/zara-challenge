@@ -13,14 +13,18 @@ interface NavbarProps {
 
 const Navbar = ({ cartCount }: NavbarProps) => {
   return (
-    <nav className={styles.navbar}>
-      <Link to={ROUTES.HOME}>
-        <img src={logo} alt="Home" />
+    <nav className={styles.navbar} aria-label="Main navigation">
+      <Link to={ROUTES.HOME} aria-label="Go to home">
+        <img src={logo} alt="MBST logo" />
       </Link>
 
-      <Link to={ROUTES.CART} className={styles.cartIcon}>
-        <img src={cartCount > 0 ? fullBagIcon : emptyBagIcon} alt="Cart" />
-        <span>{cartCount}</span>
+      <Link
+        to={ROUTES.CART}
+        className={styles.cartIcon}
+        aria-label={`Cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`}
+      >
+        <img src={cartCount > 0 ? fullBagIcon : emptyBagIcon} alt="" aria-hidden="true" />
+        <span aria-hidden="true">{cartCount}</span>
       </Link>
     </nav>
   )

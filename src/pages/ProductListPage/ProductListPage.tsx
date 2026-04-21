@@ -17,7 +17,7 @@ const ProductListPage = () => {
   if (error) return <ErrorMessage message={error} />
 
   return (
-    <main className={styles.page}>
+    <main className={styles.page} aria-label="Product catalog">
       <SearchInput value={search} onChange={setSearch} resultsCount={products.length} />
       <ProductGrid products={products} />
     </main>

@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
         <BackButton />
       </div>
       <main className={`${styles.page} fadeIn`}>
-        <section className={styles.hero}>
+        <section className={styles.hero} aria-label={`${product.name} details`}>
           <ProductImage imageUrl={currentImage} name={product.name} />
           <ProductInfo
             name={product.name}

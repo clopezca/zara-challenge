@@ -9,7 +9,11 @@ const NotFoundPage = () => {
     <main className={`${styles.page} fadeIn`}>
       <h1 className={styles.title}>404</h1>
       <p className={styles.message}>Page not found</p>
-      <button className={styles.button} onClick={() => navigate('/')}>
+      <button
+        className={styles.button}
+        onClick={() => navigate('/')}
+        aria-label="Go back to home page"
+      >
         Back to home
       </button>
     </main>

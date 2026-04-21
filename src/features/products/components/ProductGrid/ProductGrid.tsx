@@ -11,7 +11,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
   const hasProducts = products.length > 0
 
   return (
-    <ul className={`${styles.grid} ${hasProducts ? styles.visible : ''}`}>
+    <ul className={`${styles.grid} ${hasProducts ? styles.visible : ''}`} aria-label="Product list">
       {products.map((product) => (
         <li key={product.id}>
           <ProductCard product={product} />

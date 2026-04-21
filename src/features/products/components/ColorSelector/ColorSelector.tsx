@@ -10,8 +10,10 @@ interface ColorSelectorProps {
 const ColorSelector = ({ options, selected, onSelect }: ColorSelectorProps) => {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.label}>Color. Pick your favourite.</p>
-      <div className={styles.options}>
+      <p className={styles.label} id="color-label">
+        Color. Pick your favourite.
+      </p>
+      <div className={styles.options} role="group" aria-labelledby="color-label">
         {options.map((option) => (
           <button
             key={option.name}
@@ -19,11 +21,15 @@ const ColorSelector = ({ options, selected, onSelect }: ColorSelectorProps) => {
             style={{ backgroundColor: option.hexCode }}
             onClick={() => onSelect(option)}
             aria-label={option.name}
-            title={option.name}
+            aria-pressed={selected?.name === option.name}
           />
         ))}
       </div>
-      {selected && <p className={styles.colorName}>{selected.name}</p>}
+      {selected && (
+        <p className={styles.colorName} aria-live="polite">
+          {selected.name}
+        </p>
+      )}
     </div>
   )
 }

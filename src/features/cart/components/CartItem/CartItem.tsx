@@ -22,14 +22,22 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
 
   return (
     <li className={`${styles.item} ${isRemoving ? styles.fadeOut : ''}`}>
-      <Link to={`/phone/${item.id}`} className={styles.wrapper}>
-        <img src={item.imageUrl} alt={item.name} className={styles.image} />
+      <Link
+        to={`/phone/${item.id}`}
+        className={styles.wrapper}
+        aria-label={`View details of ${item.name}`}
+      >
+        <img src={item.imageUrl} className={styles.image} alt="" aria-hidden="true" />
       </Link>
 
       <div className={styles.info}>
         <div className={styles.topGroup}>
           <div className={styles.nameDetailsGroup}>
-            <Link to={`/phone/${item.id}`} className={styles.name}>
+            <Link
+              to={`/phone/${item.id}`}
+              className={styles.name}
+              aria-label={`View details of ${item.name}`}
+            >
               {item.name}
             </Link>
             <p className={styles.details}>
@@ -38,7 +46,11 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
           </div>
           <p className={styles.price}>{formatPrice(item.price)}</p>
         </div>
-        <button className={styles.remove} onClick={handleRemove}>
+        <button
+          className={styles.remove}
+          onClick={handleRemove}
+          aria-label={`Remove ${item.name} from cart`}
+        >
           remove
         </button>
       </div>

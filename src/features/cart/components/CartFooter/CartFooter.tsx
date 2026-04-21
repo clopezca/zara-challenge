@@ -13,7 +13,7 @@ const CartFooter = ({ total, isEmpty }: CartFooterProps) => {
   const navigate = useNavigate()
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} aria-label="Cart summary">
       <button
         className={`${styles.continueShopping} ${!isEmpty ? styles.hideOnMobile : ''}`}
         onClick={() => navigate(ROUTES.HOME)}
@@ -22,11 +22,11 @@ const CartFooter = ({ total, isEmpty }: CartFooterProps) => {
       </button>
       {!isEmpty && (
         <>
-          <div className={styles.totalRow}>
+          <div className={styles.totalRow} aria-hidden="true">
             <span className={styles.totalLabel}>total</span>
             <span className={styles.totalPrice}>{formatPrice(total)}</span>
           </div>
-          <div className={styles.actionsRow}>
+          <div className={styles.actionsRow} aria-hidden="true">
             <button className={styles.continueShopping} onClick={() => navigate(ROUTES.HOME)}>
               continue shopping
             </button>
@@ -37,7 +37,9 @@ const CartFooter = ({ total, isEmpty }: CartFooterProps) => {
               <span className={styles.totalLabel}>total</span>
               <span className={styles.totalPrice}>{formatPrice(total)}</span>
             </div>
-            <button className={styles.pay}>pay</button>
+            <button className={styles.pay} aria-label="Pay now">
+              pay
+            </button>
           </div>
         </>
       )}

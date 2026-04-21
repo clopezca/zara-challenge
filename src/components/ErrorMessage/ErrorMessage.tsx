@@ -6,7 +6,7 @@ interface ErrorMessageProps {
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} role="alert">
       <p className={styles.message}>{message}</p>
     </div>
   )

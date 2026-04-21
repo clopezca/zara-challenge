@@ -49,6 +49,9 @@ const ProductInfo = ({
         className={`${styles.addButton} ${canAddToCart ? styles.active : ''}`}
         disabled={!canAddToCart}
         onClick={onAddToCart}
+        aria-label={
+          canAddToCart ? `Add ${name} to cart` : 'Select color and storage to add to cart'
+        }
       >
         Add
       </button>

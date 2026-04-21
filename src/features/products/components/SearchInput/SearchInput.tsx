@@ -12,8 +12,11 @@ const SearchInput = ({ value, onChange, resultsCount }: SearchInputProps) => {
     <div className={styles.container}>
       <div className={styles.inputWrapper}>
         <input
+          id="search"
+          name="search"
+          type="search"
+          aria-label="Search for a smartphone"
           className={styles.input}
-          type="text"
           placeholder="Search for a smartphone..."
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -29,7 +32,9 @@ const SearchInput = ({ value, onChange, resultsCount }: SearchInputProps) => {
         )}
       </div>
 
-      <span className={styles.results}>{formatResultsCount(resultsCount)}</span>
+      <span className={styles.results} aria-live="polite" aria-atomic="true">
+        {formatResultsCount(resultsCount)}
+      </span>
     </div>
   )
 }
