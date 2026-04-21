@@ -4,11 +4,29 @@ A web application for browsing, searching and managing a mobile phone catalog, b
 
 ## Live Demo
 
-<!-- url -->
+[Live demo](https://clopezca.github.io/zara-challenge/)
 
 ## Screenshots
 
-<!-- screenshots -->
+### Product List
+
+<p>
+  <img src="docs/screenshots/list-desktop.png" width="500" alt="Desktop" style="vertical-align: top" />
+  <img src="docs/screenshots/list-tablet.png" width="300" alt="Tablet" style="vertical-align: top" />
+  <img src="docs/screenshots/list-mobile.png" width="150" alt="Mobile" style="vertical-align: top" />
+</p>
+
+### Product Detail
+
+<img src="docs/screenshots/detail-desktop.png" width="500" alt="Product Detail" style="vertical-align: top" />
+
+### Cart
+
+<img src="docs/screenshots/cart-desktop.png" width="500" alt="Cart" style="vertical-align: top" />
+
+### 404
+
+<img src="docs/screenshots/404.png" width="500" alt="404" style="vertical-align: top" />
 
 ## Tech stack
 
