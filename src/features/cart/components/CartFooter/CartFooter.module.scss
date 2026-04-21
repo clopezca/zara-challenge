@@ -1,0 +1,130 @@
+@use '../../../../styles/variables' as *;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 24px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+  }
+
+  @include desktop {
+    padding: 40px 100px;
+  }
+}
+
+.continueShopping {
+  display: block;
+  width: 100%;
+  height: 48px;
+  border: 0.5px solid var(--color-border);
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  @include tablet {
+    width: 260px;
+  }
+}
+
+.continueShopping.hideOnMobile {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  @include tablet {
+    display: none;
+  }
+
+  .continueShopping {
+    display: block;
+    flex: 1;
+    height: 48px;
+    border: 0.5px solid var(--color-border);
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-light);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+.rightGroup {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  @include desktop {
+    gap: 80px;
+  }
+}
+
+.totalGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.totalLabel,
+.totalPrice {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.pay {
+  flex: 1;
+  height: 48px;
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  @include tablet {
+    flex: none;
+    width: 260px;
+  }
+}

@@ -1,0 +1,105 @@
+@use '../../../../styles/variables' as *;
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  list-style: none;
+
+  @include tablet {
+    gap: 40px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 198px;
+
+  @include tablet {
+    width: 262px;
+    height: 324px;
+  }
+
+  @include desktop {
+    width: 262px;
+    height: 324px;
+  }
+
+  img {
+    width: 95%;
+    height: 95%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: center;
+
+  @include tablet {
+    width: 452px;
+    height: 324px;
+    padding: 40px 0;
+    justify-content: space-between;
+  }
+}
+
+.topGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nameDetailsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name,
+.details {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 100%;
+}
+
+.price {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  text-transform: capitalize;
+  line-height: 100%;
+}
+
+.remove {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  font-size: 12px;
+  line-height: 100%;
+  color: #df0000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  text-transform: lowercase;
+}

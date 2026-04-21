@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '../../routes'
 
 import logo from '../../assets/logo.svg'
-import bagIcon from '../../assets/bag-icon.svg'
+import emptyBagIcon from '../../assets/bag-icon.svg'
+import fullBagIcon from '../../assets/full-bag-icon.svg'
 
 import styles from './Navbar.module.scss'
 
@@ -18,7 +19,7 @@ const Navbar = ({ cartCount }: NavbarProps) => {
       </Link>
 
       <Link to={ROUTES.CART} className={styles.cartIcon}>
-        <img src={bagIcon} alt="Cart" />
+        <img src={cartCount > 0 ? fullBagIcon : emptyBagIcon} alt="Cart" />
         <span>{cartCount}</span>
       </Link>
     </nav>
