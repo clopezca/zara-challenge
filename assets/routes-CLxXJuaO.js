@@ -1,0 +1,1 @@
+var e={HOME:`/`,PRODUCT_DETAIL:`/product/:id`,CART:`/cart`},t=e=>`/product/${e}`;export{t as n,e as t};

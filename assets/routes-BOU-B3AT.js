@@ -1,1 +1,0 @@
-var e={HOME:`/`,PHONE_DETAIL:`/phone/:id`,CART:`/cart`};export{e as t};
