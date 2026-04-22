@@ -11,6 +11,7 @@ import SearchInput from '../../features/products/components/SearchInput/SearchIn
 
 const ProductListPage = () => {
   const [search, setSearch] = useState('')
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false)
   const debouncedSearch = useDebounce(search, 300)
   const { products, error } = useProducts(debouncedSearch)
 
@@ -18,8 +19,10 @@ const ProductListPage = () => {
 
   return (
     <main className={styles.page} aria-label="Product catalog">
-      <SearchInput value={search} onChange={setSearch} resultsCount={products.length} />
-      <ProductGrid products={products} />
+      {hasLoadedOnce && (
+        <SearchInput value={search} onChange={setSearch} resultsCount={products.length} />
+      )}
+      <ProductGrid products={products} onVisible={() => setHasLoadedOnce(true)} />
     </main>
   )
 }

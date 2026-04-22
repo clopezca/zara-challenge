@@ -30,9 +30,12 @@ describe('useProducts', () => {
 
     const { result } = renderHook(() => useProducts(), { wrapper })
 
-    await waitFor(() => {
-      expect(result.current.products).toEqual(mockProducts)
-    })
+    await waitFor(
+      () => {
+        expect(result.current.products).toEqual(mockProducts)
+      },
+      { timeout: 3000 }
+    )
 
     expect(productsService.getProducts).toHaveBeenCalledTimes(1)
   })
@@ -53,10 +56,13 @@ describe('useProducts', () => {
 
     const { result } = renderHook(() => useProducts(), { wrapper })
 
-    await waitFor(() => {
-      expect(result.current.error).toBe('API error')
-      expect(result.current.products).toEqual([])
-    })
+    await waitFor(
+      () => {
+        expect(result.current.error).toBe('API error')
+        expect(result.current.products).toEqual([])
+      },
+      { timeout: 3000 }
+    )
 
     expect(productsService.getProducts).toHaveBeenCalledTimes(1)
   })
@@ -83,11 +89,14 @@ describe('useProducts', () => {
 
     rerender({ search: 'samsung' })
 
-    await waitFor(() => {
-      expect(productsService.getProducts).toHaveBeenLastCalledWith(
-        'samsung',
-        expect.any(AbortSignal)
-      )
-    })
+    await waitFor(
+      () => {
+        expect(productsService.getProducts).toHaveBeenLastCalledWith(
+          'samsung',
+          expect.any(AbortSignal)
+        )
+      },
+      { timeout: 3000 }
+    )
   })
 })

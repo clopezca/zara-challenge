@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import type { Product } from '../../../../types/product.types'
 import ProductCard from '../ProductCard/ProductCard'
 
@@ -5,10 +6,17 @@ import styles from './ProductGrid.module.scss'
 
 interface ProductGridProps {
   products: Product[]
+  onVisible?: () => void
 }
 
-const ProductGrid = ({ products }: ProductGridProps) => {
+const ProductGrid = ({ products, onVisible }: ProductGridProps) => {
   const hasProducts = products.length > 0
+
+  useEffect(() => {
+    if (hasProducts && onVisible) {
+      onVisible()
+    }
+  }, [hasProducts, onVisible])
 
   return (
     <ul className={`${styles.grid} ${hasProducts ? styles.visible : ''}`} aria-label="Product list">

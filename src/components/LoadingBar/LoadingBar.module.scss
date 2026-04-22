@@ -3,18 +3,38 @@
   top: var(--navbar-height);
   left: 0;
   height: 1px;
-  width: 100%;
-  background-color: var(--color-text-primary);
-  transform-origin: left;
-  animation: loading 1.5s ease-out forwards;
-  z-index: 10;
+  width: 0;
+  background: var(--color-text-primary);
+  animation: progress 1.2s ease-out forwards;
+  z-index: 101;
 }
 
-@keyframes loading {
+.shimmer {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-text-primary) 50%,
+    transparent 100%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+@keyframes progress {
   0% {
-    transform: scaleX(0);
+    width: 0;
   }
   100% {
-    transform: scaleX(1);
+    width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
   }
 }

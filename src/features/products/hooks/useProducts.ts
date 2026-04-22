@@ -4,6 +4,8 @@ import type { Product } from '../../../types/product.types'
 import { useLoading } from '../../../context/loading/useLoading'
 
 const MIN_SEARCH_LENGTH = 3
+const MIN_LOADING_TIME = 1200
+let isFirstLoad = true
 
 interface UseProductsResult {
   products: Product[]
@@ -28,7 +30,13 @@ export const useProducts = (search?: string): UseProductsResult => {
         setIsLoading(true)
         setError(null)
 
-        const data = await getProducts(search, controller.signal)
+        const minTime = isFirstLoad ? MIN_LOADING_TIME : 0
+
+        const dataPromise = getProducts(search, controller.signal)
+        await new Promise((resolve) => setTimeout(resolve, minTime))
+        isFirstLoad = false
+        const data = await dataPromise
+
         setProducts(data)
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return
