@@ -106,6 +106,7 @@ src/
 │   ├── components/ # Product-specific components
 │   └── hooks/ # useProducts, useProductDetail
 ├── hooks/ # Shared hooks (useDebounce)
+├── mocks/ # MSW handlers and server setup for testing
 ├── pages/ # Page components (ProductListPage, ProductDetailPage, CartPage, NotFoundPage)
 ├── services/ # API client and product services
 ├── styles/ # Global styles and SASS variables
@@ -144,9 +145,14 @@ Client-side routing with React Router v7. All pages are lazy-loaded with `React.
 
 ## Testing
 
-- **104 tests** across components, hooks, contexts, services and utilities
-- **97% statement coverage**
-- Run `npm run test:coverage` to see the full coverage report
+The project has two levels of tests:
+
+- **Unit and component tests** — hooks, contexts, services, utilities and individual components tested in isolation with mocked dependencies
+- **Integration tests with MSW** — complete user flows tested using Mock Service Worker to intercept HTTP requests, allowing the full stack to run without external dependencies
+
+**110 tests** across all levels with **97% statement coverage**.
+
+Run `npm run test:coverage` to see the full coverage report.
 
 ## Accessibility & Performance
 
@@ -191,6 +197,7 @@ Performance optimizations include `preconnect` hints, `fetchPriority="high"` on 
 - **Image optimization** — the API serves large unoptimized images; a middleware or CDN with `srcset` support would significantly improve LCP
 - **Husky + Commitlint** — git hooks to enforce code quality and commit message conventions on every commit
 - **GitHub Actions CI/CD** — automated testing and deployment pipeline on every pull request
+- **E2E testing with Playwright** — would cover critical user flows end-to-end (search, add to cart, checkout) complementing the existing unit and integration test suite
 
 ## API
 
