@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import { server } from './mocks/server'
 
 window.scrollTo = vi.fn()
 
@@ -12,3 +13,7 @@ const localStorageMock = {
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
 })
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
