@@ -65,7 +65,7 @@ describe('ProductCard', () => {
 
     expect(screen.getByRole('link', { name: /samsung galaxy s24 ultra/i })).toHaveAttribute(
       'href',
-      '/phone/SMG-S24U'
+      '/product/SMG-S24U'
     )
   })
 })

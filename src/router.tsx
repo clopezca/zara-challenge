@@ -12,7 +12,7 @@ const AppRouter = () => {
     <Suspense fallback={null}>
       <Routes>
         <Route path={ROUTES.HOME} element={<ProductListPage />} />
-        <Route path={ROUTES.PHONE_DETAIL} element={<ProductDetailPage />} />
+        <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetailPage />} />
         <Route path={ROUTES.CART} element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

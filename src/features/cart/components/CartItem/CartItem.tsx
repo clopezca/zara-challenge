@@ -23,7 +23,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   return (
     <li className={`${styles.item} ${isRemoving ? styles.fadeOut : ''}`}>
       <Link
-        to={`/phone/${item.id}`}
+        to={`/product/${item.id}`}
         className={styles.wrapper}
         aria-label={`View details of ${item.name}`}
       >
@@ -41,7 +41,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
         <div className={styles.topGroup}>
           <div className={styles.nameDetailsGroup}>
             <Link
-              to={`/phone/${item.id}`}
+              to={`/product/${item.id}`}
               className={styles.name}
               aria-label={`View details of ${item.name}`}
             >

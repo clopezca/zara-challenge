@@ -13,9 +13,9 @@ vi.mock('../../features/products/hooks/useProductDetail')
 const wrapper = ({ children }: { children: React.ReactNode }) => (
   <CartProvider>
     <LoadingProvider>
-      <MemoryRouter initialEntries={['/phone/SMG-S24U']}>
+      <MemoryRouter initialEntries={['/product/SMG-S24U']}>
         <Routes>
-          <Route path="/phone/:id" element={children} />
+          <Route path="/product/:id" element={children} />
         </Routes>
       </MemoryRouter>
     </LoadingProvider>
