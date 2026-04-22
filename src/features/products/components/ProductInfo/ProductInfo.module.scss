@@ -1,17 +1,24 @@
 @use '../../../../styles/variables' as *;
 
-.wrapper {
-  width: 260px;
-  height: auto;
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
 
   @include tablet {
-    width: 336px;
-    height: auto;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   @include desktop {
-    width: 510px;
-    height: 630px;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 110px;
   }
 }
 
