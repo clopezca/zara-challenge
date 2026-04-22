@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
+import { getProductDetailRoute, ROUTES } from '../../routes'
 import { LoadingProvider } from '../../context/loading/LoadingProvider'
 import { CartProvider } from '../../context/cart/CartProvider'
 import * as useProductDetailHook from '../../features/products/hooks/useProductDetail'
@@ -13,9 +14,9 @@ vi.mock('../../features/products/hooks/useProductDetail')
 const wrapper = ({ children }: { children: React.ReactNode }) => (
   <CartProvider>
     <LoadingProvider>
-      <MemoryRouter initialEntries={['/product/SMG-S24U']}>
+      <MemoryRouter initialEntries={[getProductDetailRoute('SMG-S24U')]}>
         <Routes>
-          <Route path="/product/:id" element={children} />
+          <Route path={ROUTES.PRODUCT_DETAIL} element={children} />
         </Routes>
       </MemoryRouter>
     </LoadingProvider>

@@ -3,3 +3,5 @@ export const ROUTES = {
   PRODUCT_DETAIL: '/product/:id',
   CART: '/cart',
 } as const
+
+export const getProductDetailRoute = (id: string) => `/product/${id}`
