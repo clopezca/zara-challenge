@@ -31,7 +31,7 @@ describe('ProductListPage', () => {
 
     render(<ProductListPage />, { wrapper })
 
-    expect(screen.getByText('API error')).toBeInTheDocument()
+    expect(screen.getByRole('alert')).toHaveTextContent('API error')
   })
 
   it('should render products when loaded', () => {
