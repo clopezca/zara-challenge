@@ -2,12 +2,11 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 import { LoadingProvider } from '../../context/loading/LoadingProvider'
+import { CartProvider } from '../../context/cart/CartProvider'
 import * as useProductDetailHook from '../../features/products/hooks/useProductDetail'
 import * as useCartHook from '../../context/cart/useCart'
 
 import ProductDetailPage from './ProductDetailPage'
-import { CartProvider } from '../../context/cart/CartProvider'
-import ProductDetailContent from './components/ProductDetailContent/ProductDetailContent'
 
 vi.mock('../../features/products/hooks/useProductDetail')
 
@@ -92,7 +91,12 @@ describe('ProductDetailPage', () => {
       total: 0,
     })
 
-    render(<ProductDetailContent product={mockProduct} />, { wrapper })
+    vi.spyOn(useProductDetailHook, 'useProductDetail').mockReturnValue({
+      product: mockProduct,
+      error: null,
+    })
+
+    render(<ProductDetailPage />, { wrapper })
 
     fireEvent.click(screen.getByLabelText('Titanium Black'))
     fireEvent.click(screen.getByText('256 GB'))
