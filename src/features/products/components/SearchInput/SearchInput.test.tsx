@@ -5,7 +5,7 @@ describe('SearchInput', () => {
   it('should render the input with placeholder', () => {
     render(<SearchInput value="" onChange={() => {}} resultsCount={0} />)
 
-    expect(screen.getByPlaceholderText('Search for a smartphone...')).toBeInTheDocument()
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
   })
 
   it('should call onChange when user types', () => {
@@ -13,7 +13,7 @@ describe('SearchInput', () => {
 
     render(<SearchInput value="" onChange={mockOnChange} resultsCount={0} />)
 
-    fireEvent.change(screen.getByPlaceholderText('Search for a smartphone...'), {
+    fireEvent.change(screen.getByRole('searchbox'), {
       target: { value: 'samsung' },
     })
 

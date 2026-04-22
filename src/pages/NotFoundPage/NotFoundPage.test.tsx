@@ -23,7 +23,7 @@ describe('NotFoundPage', () => {
   })
 
   it('should render 404', () => {
-    expect(screen.getByText('404')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '404' })).toBeInTheDocument()
   })
 
   it('should render page not found message', () => {

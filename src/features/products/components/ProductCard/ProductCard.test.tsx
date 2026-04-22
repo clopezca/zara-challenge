@@ -31,12 +31,14 @@ describe('ProductCard', () => {
   it('should render the product image', () => {
     cleanup()
 
-    const { container } = render(
+    render(
       <MemoryRouter>
         <ProductCard product={mockProduct} />
       </MemoryRouter>
     )
-    const img = container.querySelector('img')
+    const link = screen.getByRole('link', { name: /samsung galaxy s24 ultra/i })
+    const img = link.querySelector('img')
+
     expect(img).toHaveAttribute('src', mockProduct.imageUrl)
   })
 
@@ -61,8 +63,9 @@ describe('ProductCard', () => {
       </MemoryRouter>
     )
 
-    const link = screen.getByRole('link')
-
-    expect(link).toHaveAttribute('href', '/phone/SMG-S24U')
+    expect(screen.getByRole('link', { name: /samsung galaxy s24 ultra/i })).toHaveAttribute(
+      'href',
+      '/phone/SMG-S24U'
+    )
   })
 })

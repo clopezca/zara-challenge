@@ -37,7 +37,7 @@ describe('ProductInfo', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Galaxy S24 Ultra' })).toBeInTheDocument()
   })
 
   it('should show "From X EUR" when no storage selected', () => {
@@ -57,7 +57,7 @@ describe('ProductInfo', () => {
       </MemoryRouter>
     )
 
-    fireEvent.click(screen.getByText('256 GB'))
+    fireEvent.click(screen.getByRole('button', { name: '256 GB' }))
 
     expect(screen.getByText('1229 EUR')).toBeInTheDocument()
   })
@@ -80,7 +80,7 @@ describe('ProductInfo', () => {
     )
 
     fireEvent.click(screen.getByLabelText('Titanium Black'))
-    fireEvent.click(screen.getByText('256 GB'))
+    fireEvent.click(screen.getByRole('button', { name: '256 GB' }))
 
     expect(screen.getByRole('button', { name: /add/i })).not.toBeDisabled()
   })
@@ -94,7 +94,7 @@ describe('ProductInfo', () => {
     )
 
     fireEvent.click(screen.getByLabelText('Titanium Black'))
-    fireEvent.click(screen.getByText('256 GB'))
+    fireEvent.click(screen.getByRole('button', { name: '256 GB' }))
     fireEvent.click(screen.getByRole('button', { name: /add galaxy s24 ultra to cart/i }))
 
     expect(mockOnAddToCart).toHaveBeenCalledTimes(1)

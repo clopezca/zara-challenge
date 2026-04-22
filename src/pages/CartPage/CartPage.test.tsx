@@ -39,7 +39,7 @@ describe('CartPage', () => {
 
     render(<CartPage />, { wrapper })
 
-    expect(screen.getByText('cart (0)')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /cart \(0\)/i })).toBeInTheDocument()
   })
 
   it('should show items when cart has products', () => {
@@ -53,7 +53,7 @@ describe('CartPage', () => {
 
     render(<CartPage />, { wrapper })
 
-    expect(screen.getByText('cart (1)')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /cart \(1\)/i })).toBeInTheDocument()
     expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
   })
 
@@ -77,5 +77,20 @@ describe('CartPage', () => {
       },
       { timeout: 500 }
     )
+  })
+
+  it('should not show total and pay button when cart is empty', () => {
+    vi.spyOn(useCartHook, 'useCart').mockReturnValue({
+      items: [],
+      addItem: vi.fn(),
+      removeItem: vi.fn(),
+      totalCount: 0,
+      total: 0,
+    })
+
+    render(<CartPage />, { wrapper })
+
+    expect(screen.queryByRole('button', { name: /pay now/i })).not.toBeInTheDocument()
+    expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
   })
 })

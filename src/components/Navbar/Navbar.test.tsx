@@ -11,7 +11,7 @@ describe('Navbar', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByAltText('MBST logo')).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'MBST logo' })).toBeInTheDocument()
   })
 
   it('should render the cart icon', () => {

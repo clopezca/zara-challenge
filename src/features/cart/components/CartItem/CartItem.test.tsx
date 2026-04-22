@@ -56,7 +56,7 @@ describe('CartItem', () => {
       </MemoryRouter>
     )
 
-    fireEvent.click(screen.getByRole('button'))
+    fireEvent.click(screen.getByRole('button', { name: /remove galaxy s24 ultra from cart/i }))
 
     await waitFor(() => {
       expect(mockOnRemove).toHaveBeenCalledWith('123abc')
