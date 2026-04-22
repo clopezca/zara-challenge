@@ -13,7 +13,7 @@ const ProductCard = ({ product, priority = false }: ProductCardProps) => {
   return (
     <article className={styles.card}>
       <Link
-        to={`/phone/${product.id}`}
+        to={`/product/${product.id}`}
         className={styles.cardLink}
         aria-label={`${product.brand} ${product.name}, ${formatPrice(product.basePrice)}`}
       >
