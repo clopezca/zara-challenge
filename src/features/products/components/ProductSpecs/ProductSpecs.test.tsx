@@ -25,7 +25,7 @@ describe('ProductSpecs', () => {
   })
 
   it('should render the title', () => {
-    expect(screen.getByText('specifications')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /specifications/i })).toBeInTheDocument()
   })
 
   it('should render brand and name', () => {

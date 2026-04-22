@@ -56,7 +56,7 @@ describe('ProductDetailPage', () => {
 
     render(<ProductDetailPage />, { wrapper })
 
-    expect(screen.getByText('API error')).toBeInTheDocument()
+    expect(screen.getByRole('alert')).toHaveTextContent('API error')
   })
 
   it('should render nothing when product is null', () => {
@@ -99,7 +99,7 @@ describe('ProductDetailPage', () => {
     render(<ProductDetailPage />, { wrapper })
 
     fireEvent.click(screen.getByLabelText('Titanium Black'))
-    fireEvent.click(screen.getByText('256 GB'))
+    fireEvent.click(screen.getByRole('button', { name: '256 GB' }))
     fireEvent.click(screen.getByRole('button', { name: /add galaxy s24 ultra to cart/i }))
 
     expect(mockAddItem).toHaveBeenCalledWith(

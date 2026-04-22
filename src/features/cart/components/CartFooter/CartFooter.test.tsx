@@ -24,8 +24,8 @@ describe('CartFooter', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText(/continue shopping/i)).toBeInTheDocument()
-    expect(screen.queryByText(/pay/i)).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /continue shopping/i })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /pay/i })).not.toBeInTheDocument()
     expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
   })
 
@@ -38,7 +38,7 @@ describe('CartFooter', () => {
 
     expect(screen.getAllByText(/total/i).length).toBeGreaterThan(0)
     expect(screen.getAllByText('1229 EUR').length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/pay/i).length).toBeGreaterThan(0)
+    expect(screen.getByRole('button', { name: /pay/i })).toBeInTheDocument()
   })
 
   it('should navigate to home when continue shopping is clicked', () => {

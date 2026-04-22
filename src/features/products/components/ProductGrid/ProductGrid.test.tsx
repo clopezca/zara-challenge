@@ -29,8 +29,8 @@ describe('ProductGrid', () => {
   })
 
   it('should render all products', () => {
-    expect(screen.getByText('Galaxy A25 5G')).toBeInTheDocument()
-    expect(screen.getByText('Pixel 8a')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /samsung galaxy a25 5g/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /google pixel 8a/i })).toBeInTheDocument()
   })
 
   it('should render correct number of products', () => {

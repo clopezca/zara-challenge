@@ -29,12 +29,12 @@ describe('SimilarProducts', () => {
   })
 
   it('should render the title', () => {
-    expect(screen.getByText('similar items')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /similar items/i })).toBeInTheDocument()
   })
 
   it('should render all similar products', () => {
-    expect(screen.getByText('iPhone 15 Pro Max')).toBeInTheDocument()
-    expect(screen.getByText('Galaxy S24 Ultra')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /apple iphone 15 pro max/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /samsung galaxy s24 ultra/i })).toBeInTheDocument()
   })
 
   it('should render correct number of products', () => {
