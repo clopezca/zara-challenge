@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import type { CartItem as CartItemType } from '../../../../context/cart/CartContext'
+import { Link } from 'react-router-dom'
+
 import { formatPrice } from '../../../../utils/utils'
+import { getProductDetailRoute } from '../../../../routes'
+import type { CartItem as CartItemType } from '../../../../context/cart/CartContext'
 
 import styles from './CartItem.module.scss'
-import { Link } from 'react-router-dom'
 
 interface CartItemProps {
   item: CartItemType
@@ -23,7 +25,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
   return (
     <li className={`${styles.item} ${isRemoving ? styles.fadeOut : ''}`}>
       <Link
-        to={`/product/${item.id}`}
+        to={getProductDetailRoute(item.id)}
         className={styles.wrapper}
         aria-label={`View details of ${item.name}`}
       >
@@ -41,7 +43,7 @@ const CartItem = ({ item, onRemove }: CartItemProps) => {
         <div className={styles.topGroup}>
           <div className={styles.nameDetailsGroup}>
             <Link
-              to={`/product/${item.id}`}
+              to={getProductDetailRoute(item.id)}
               className={styles.name}
               aria-label={`View details of ${item.name}`}
             >

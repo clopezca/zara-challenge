@@ -1,6 +1,7 @@
 import { render, waitFor, screen, fireEvent } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
+import { ROUTES } from '../../routes'
 import { CartProvider } from '../../context/cart/CartProvider'
 import { LoadingProvider } from '../../context/loading/LoadingProvider'
 import { useCart } from '../../context/cart/useCart'
@@ -16,7 +17,7 @@ const Layout = () => {
       <Navbar cartCount={totalCount} />
       <Routes>
         <Route path="/" element={<ProductListPage />} />
-        <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetailPage />} />
       </Routes>
     </>
   )

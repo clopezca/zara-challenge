@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import { getProductDetailRoute } from '../../../../routes'
 import ProductCard from './ProductCard'
 
 vi.mock('react-router-dom', async () => {
@@ -65,7 +66,7 @@ describe('ProductCard', () => {
 
     expect(screen.getByRole('link', { name: /samsung galaxy s24 ultra/i })).toHaveAttribute(
       'href',
-      '/product/SMG-S24U'
+      getProductDetailRoute('SMG-S24U')
     )
   })
 })
